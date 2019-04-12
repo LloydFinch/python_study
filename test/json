@@ -1,0 +1,48 @@
+json问题
+
+以key-value的形式展现，方便解析使用，json元素之间一定要用逗号隔开，否则会报错
+字符串用""包括，数组或者list集合用[]表示，对象用{}包括
+
+{
+    "id":"10000011",                    //一个字符值，
+    "name":"lichang",
+    "age":25,                           //一个整型
+
+    "game":{                            //一个对象
+        "id":"123456",
+        "type":"poke"
+     },                                 //即使是对象，逗号也不能少
+
+     "family":[                         //一个数组，数组元素可以是字符串，对象，甚至数组
+        {"role":"father","age":50},
+        {"role":"mather","age":49}
+     ]
+}
+
+这个json对应的类结构应该是这样(java代码)
+
+class Data{
+
+
+    String id;
+    String name;
+    ing age;
+
+    Game game;      //game对应的对象，获取的时候可以从game里面取得，比如game.id, game.type
+
+    List<Family> family;      //family对应的数组集合
+
+
+    //这里定义game对应的对象
+    class Game{
+
+        String id;
+        String type;
+    }
+
+    //这里定义family对应的对象
+    class Family{
+        String role;
+        int age;
+    }
+}
